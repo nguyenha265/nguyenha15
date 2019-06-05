@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox" onchange="changeStatus()" id="box1"/>
+<input type="checkbox" onchange="changeStatus()" id="box2"/>
+<input type="checkbox" onchange="changeStatus()" id="box3"/>
+<script>
+    function changeStatus() {
+        let hop1 = document.getElementById("box1");
+        let hop2 = document.getElementById("box2");
+        let hop3 = document.getElementById("box3");
+
+        let checked = [];
+        let chk = document.querySelectorAll('input[type="checkbox"]');
+
+        [].forEach.call(chk, function (checkbox) {
+            checkbox.addEventListener('change', function (e) {
+
+                if (checkbox.checked && checked.length === 2) {
+                    var uncheckTarget = checked[Math.floor(Math.random() * 3)];
+                    uncheckTarget.checked = false;
+                }
+                checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            });
+        });
+
+    }
+</script>
+</body>
+</html>
